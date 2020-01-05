@@ -1,0 +1,51 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Build",
+      "type": "shell",
+      "command": "mvn",
+      "args": ["compile", "-f", "pom.xml"],
+      "options": {
+        "cwd": "${workspaceRoot}"
+      },
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    },
+    {
+      "label": "Test",
+      "type": "shell",
+      "command": "mvn",
+      "args": ["test", "-f", "pom.xml"],
+      "options": {
+        "cwd": "${workspaceRoot}"
+      },
+      "group": {
+        "kind": "test",
+        "isDefault": true
+      }
+    },
+    {
+      "label": "Package",
+      "type": "shell",
+      "command": "mvn",
+      "args": ["package", "-f", "pom.xml"],
+      "options": {
+        "cwd": "${workspaceRoot}"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Run",
+      "type": "shell",
+      "command": "java",
+      "args": ["-jar", "target/lox-1.0.0-SNAPSHOT.jar"],
+      "options": {
+        "cwd": "${workspaceRoot}"
+      },
+      "problemMatcher": []
+    }
+  ]
+}

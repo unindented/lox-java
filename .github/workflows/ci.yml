@@ -1,0 +1,27 @@
+name: CI
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [windows-latest, ubuntu-latest, macOS-latest]
+
+    steps:
+    - uses: actions/checkout@v2
+      
+    - name: Set Up JDK 1.8
+      uses: actions/setup-java@v1
+      with:
+        java-version: 1.8
+
+    - name: Check Versions
+      run: |
+        javac -version
+        mvn --version
+  
+    - name: Package
+      run: mvn -B package --file pom.xml
